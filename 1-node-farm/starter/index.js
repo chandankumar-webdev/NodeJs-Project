@@ -27,13 +27,16 @@ const url = require('url')
 //////////////////////////////////////////////////
 //server
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8')
+const productData = fs.readFileSync(`${__dirname}/templates/product.html`, 'utf-8')
 console.log('dir---------', __dirname)
+const parsedData = JSON.parse(data)
 
 const server = http.createServer((req, res) => {
     const pathName = req.url
 
     if (pathName === '/' || pathName === '/overview') {
-        res.end('this is overview')
+        const updateProductData = productData.replace('{%PRODUCTNAME%}', parsedData[0].productName)
+        res.end(updateProductData)
     } else if (pathName === '/products') {
         res.end('this is products')
     } else if (pathName === '/api') {
