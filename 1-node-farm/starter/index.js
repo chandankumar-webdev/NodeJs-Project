@@ -2,7 +2,7 @@ const fs = require('fs')
 const http = require('http')
 const url = require('url')
 
-////////////////////////////////
+//////////////////////////////////
 // file read
 
 // const fileData = fs.readFileSync('./txt/input.txt', 'utf-8')
